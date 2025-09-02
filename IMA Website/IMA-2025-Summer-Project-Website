@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jaylin's Project</title>
+    <link rel="icon" href="../IMA Website/websiteLogo.png">
+	<link rel="stylesheet" type="text/css" href="../IMA Website/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+
+		<div class="logo">
+			<img src="../IMA Website/websiteLogo.png" alt="Summer 2025 IMA">
+		</div>
+        <head>
+        PTY
+        </head>
+	</header>
+
+    <main>
+        <div class="image-container">
+            <img src="../IMA Website/Summer Show.jpg" alt="dna">
+            <img src="../images/flp.JPG">
+            <img src="../images/DNA2.JPG">
+        </div>
+    
+        <div class='card-holder'>
+    
+            <div class='card-wrapper'>
+            <a href="About Us.html">
+            <div class='card bg-01'>
+            <span class='card-content'>ABOUT US</span>
+            </div>
+    
+            </a>
+            </div>
+            <div class='card-wrapper'>
+            <a href="Team Members.html">
+            <div class='card bg-02'>
+            <span class='card-content'>MEMBERS</span>
+            </div>
+            </a>
+            </div>
+    
+            <div class='card-wrapper'>
+            <a href="Dance videos.html">
+            <div class='card bg-03'>
+            <span class='card-content'>VIDEOS</span>
+            </div>
+            </a>
+            </div>
+    
+            <div class='card-wrapper'>
+            <a href="Gallery.html">
+            <div class='card bg-04'>
+            <span class='card-content'>GALLERY</span>
+            </div>
+            </a>
+            </div>
+    
+            <div class='card-wrapper'>
+            <a href="Our Experiences.html">
+            <div class='card bg-05'>
+            <span class='card-content'>OUR EXPERIENCES</span>
+            </div>
+    
+            <div class='card-wrapper'>
+            <a href="Contact Us.html">
+            <div class='card bg-06'>
+            <span class='card-content'>CONTACT US</span>
+            </div>
+            </a>
+            </div>
+    </main>
+    </body>
+
+<footer>
+    <p>&copy; 2025 Jaylin</p>
+  </footer>
+</html>
