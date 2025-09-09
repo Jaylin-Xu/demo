@@ -139,3 +139,295 @@
   </footer>
 </body>
 </html>
+
+/* black-gold color */
+:root{
+  --bg: #0b0b10;           
+  --bg-soft: #11131a;      /* card/section surface */
+  --text: #e6e6ea;         /* main text */
+  --muted: #b9b9c0;        /* subtle text */
+  --gold: #d4af37;        
+  --gold-2: #f1d073;       
+  --accent: #8a6cff;     
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+}
+
+/* Setting */
+.container{
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+.section{
+  padding: 72px 0;
+}
+.lead{
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* Header */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(11,11,16,.9), rgba(11,11,16,.6));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(212,175,55,.12);
+}
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+.logo{
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: var(--gold);
+  font-size: 20px;
+}
+.nav a{
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 18px;
+  opacity: .9;
+}
+.nav a:hover{ opacity: 1; color: var(--gold); }
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease, color .2s ease, background .2s ease;
+  will-change: transform;
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #2a2300;
+  box-shadow: 0 0 32px rgba(212,175,55,.25);
+}
+.btn-primary:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 44px rgba(212,175,55,.4);
+}
+.btn-outline{
+  border: 1px solid rgba(212,175,55,.5);
+  color: var(--gold);
+  padding: 10px 16px;
+}
+.btn-outline:hover{
+  background: rgba(212,175,55,.08);
+  transform: translateY(-1px);
+}
+
+/* Hero Section*/
+.hero{
+  position: relative;
+  overflow: clip;
+  padding: 80px 0 96px;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(138,108,255,.15), transparent 60%),
+    radial-gradient(800px 400px at 20% 0%, rgba(212,175,55,.12), transparent 55%);
+  border-bottom: 1px solid rgba(212,175,55,.12);
+}
+.hero-inner{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 36px;
+  align-items: center;
+}
+.hero h1{
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 10px 0;
+  letter-spacing: .2px;
+}
+.hero .sub{
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+
+
+/* 🔮+✨ emoji；GPT 5 */
+.crystal-emoji {
+  font-size: 150px;       /* 调整水晶球大小 */
+  text-align: center;
+  margin: 40px auto;
+  position: relative;     /* 方便伪元素定位 */
+  display: inline-block;  /* 保证定位有效 */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.crystal-emoji:hover {
+  transform: scale(1.05);  /* 鼠标悬停时稍微放大 */
+}
+
+.crystal-emoji::after {
+  content: "✨";           /* 默认附加的 emoji */
+  font-size: 48px;         /* ✨ 的大小 */
+  position: absolute;
+  top: -10px;              /* 距离 🔮 上方 */
+  right: -30px;            /* 距离 🔮 右侧 */
+  opacity: 0;              /* 默认不显示 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.crystal-emoji:hover::after {
+  opacity: 1;              /* 悬停时显示 */
+  transform: translateY(-6px);  /* 轻微漂浮效果 */
+}
+
+
+
+/* Cards (Services) */
+.cards{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
+  border: 1px solid rgba(212,175,55,.18);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card h3{ margin: 2px 0 8px; color: var(--gold); }
+.card p{ color: var(--muted); margin: 0 0 12px; }
+.card:hover{
+  transform: translateY(-4px);
+  border-color: rgba(212,175,55,.35);
+  box-shadow: 0 12px 42px rgba(0,0,0,.55);
+}
+.link-btn{
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.link-btn:hover{ text-decoration: underline; }
+
+/* About */
+.two-col{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 28px;
+  align-items: center;
+}
+.ticks{
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+.ticks li{
+  margin: 6px 0;
+}
+.ticks li::before{
+  content: "✓";
+  color: var(--gold);
+  margin-right: 8px;
+}
+.about-panel{
+  position: relative;
+  height: 240px;
+  border-radius: var(--radius);
+  background: radial-gradient(120px 120px at 70% 30%, rgba(212,175,55,.2), transparent 60%), var(--bg-soft);
+  border: 1px solid rgba(212,175,55,.15);
+  overflow: hidden;
+}
+.about-glow{
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 50% 50%, rgba(212,175,55,.15), transparent 55%);
+  animation: slow-pan 12s linear infinite;
+}
+@keyframes slow-pan{
+  0%{ transform: translate(0,0); }
+  50%{ transform: translate(-6%, 4%); }
+  100%{ transform: translate(0,0); }
+}
+.sigil{
+  position: absolute;
+  right: 16px; bottom: 14px;
+  font-size: 42px;
+  color: rgba(212,175,55,.55);
+}
+
+/* Testimonials */
+.testi-wrap{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+.testi{
+  margin: 0;
+  background: var(--bg-soft);
+  border: 1px solid rgba(212,175,55,.14);
+  border-radius: var(--radius);
+  padding: 18px;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.testi cite{
+  display: block;
+  margin-top: 10px;
+  color: var(--gold);
+  font-style: normal;
+  opacity: .9;
+}
+
+/* Footer */
+.site-footer{
+  border-top: 1px solid rgba(212,175,55,.12);
+  padding: 26px 0 40px;
+  background: linear-gradient(to top, rgba(11,11,16,1), rgba(11,11,16,.6));
+}
+.footer-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer a{
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 14px;
+}
+.site-footer a:hover{ color: var(--gold); }
+
+/* 响应式样式 (Responsive CSS)；GPT5  */
+@media (max-width: 960px){
+  .hero-inner{ grid-template-columns: 1fr; text-align: center; }
+  .crystal{ width: min(320px, 80%); }
+  .two-col{ grid-template-columns: 1fr; }
+  .cards{ grid-template-columns: repeat(2, 1fr); }
+  .testi-wrap{ grid-template-columns: 1fr; }
+  .nav a{ margin-left: 12px; }
+}
+@media (max-width: 520px){
+  .cards{ grid-template-columns: 1fr; }
+  .logo{ font-size: 18px; }
+  .nav{ display: none; } /* keep header minimal on very small screens */
+}
