@@ -1,9 +1,9 @@
-/* black-gold color */
+/* black-gold theme */
 :root{
   --bg: #0b0b10;           
-  --bg-soft: #11131a;      /* card/section surface */
-  --text: #e6e6ea;         /* main text */
-  --muted: #b9b9c0;        /* subtle text */
+  --bg-soft: #11131a;
+  --text: #e6e6ea;
+  --muted: #b9b9c0;
   --gold: #d4af37;        
   --gold-2: #f1d073;       
   --accent: #8a6cff;     
@@ -11,8 +11,8 @@
   --shadow: 0 10px 30px rgba(0,0,0,.45);
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
 body{
   margin: 0;
   background: var(--bg);
@@ -20,24 +20,18 @@ body{
   font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
 }
 
-/* Setting */
+/* Layout */
 .container{
   width: min(1120px, 92vw);
   margin: 0 auto;
 }
-.section{
-  padding: 72px 0;
-}
-.lead{
-  color: var(--muted);
-  margin-top: 8px;
-}
+.section{ padding: 72px 0; }
+.lead{ color: var(--muted); margin-top: 8px; }
 
 /* Header */
 .site-header{
   position: sticky;
-  top: 0;
-  z-index: 10;
+  top: 0; z-index: 10;
   background: linear-gradient(to bottom, rgba(11,11,16,.9), rgba(11,11,16,.6));
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(212,175,55,.12);
@@ -45,14 +39,8 @@ body{
 .header-inner{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 14px 0;
-}
-.logo{
-  font-weight: 700;
-  letter-spacing: .5px;
-  color: var(--gold);
-  font-size: 20px;
 }
 .nav a{
   color: var(--text);
@@ -61,20 +49,20 @@ body{
   opacity: .9;
 }
 .nav a:hover,
-.nav a:focus-visible{ opacity: 1; color: var(--gold); outline: none; }
+.nav a:focus-visible{
+  color: var(--gold);
+  opacity: 1;
+  outline: none;
+}
 
 /* Buttons */
 .btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
   padding: 12px 18px;
   border-radius: 999px;
-  text-decoration: none;
   font-weight: 600;
-  transition: transform .2s ease, box-shadow .2s ease, color .2s ease, background .2s ease;
-  will-change: transform;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s, color .2s, background .2s;
 }
 .btn-primary{
   background: linear-gradient(135deg, var(--gold), var(--gold-2));
@@ -85,7 +73,6 @@ body{
 .btn-primary:focus-visible{
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 0 44px rgba(212,175,55,.4);
-  outline: none;
 }
 .btn-outline{
   border: 1px solid rgba(212,175,55,.5);
@@ -96,10 +83,9 @@ body{
 .btn-outline:focus-visible{
   background: rgba(212,175,55,.08);
   transform: translateY(-1px);
-  outline: none;
 }
 
-/* Hero Section*/
+/* Hero */
 .hero{
   position: relative;
   overflow: clip;
@@ -117,49 +103,40 @@ body{
 }
 .hero h1{
   font-size: clamp(36px, 6vw, 56px);
+  margin: 0 0 10px;
   line-height: 1.1;
-  margin: 0 0 10px 0;
-  letter-spacing: .2px;
 }
-.hero .sub{
-  color: var(--muted);
-  margin-bottom: 22px;
-}
+.hero .sub{ color: var(--muted); margin-bottom: 22px; }
 
-/* 🔮+✨ emoji；GPT 5 */
-.crystal-emoji {
-  font-size: 150px;       /* 调整水晶球大小 */
+/* Crystal ball 🔮 */
+.crystal-emoji{
+  font-size: 150px;
   text-align: center;
   margin: 40px auto 0;
-  position: relative;     /* 方便伪元素定位 */
-  display: inline-block;  /* 保证定位有效 */
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform .3s ease;
 }
-.crystal-emoji:hover { transform: scale(1.05); }
-.crystal-emoji::after {
-  content: "✨";
+.crystal-emoji:hover{ transform: scale(1.05); }
+.crystal-emoji::after{
+  content:"✨";
   font-size: 48px;
   position: absolute;
-  top: -10px;
-  right: -30px;
+  top: -10px; right: -30px;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity .3s, transform .3s;
 }
-.crystal-emoji:hover::after {
-  opacity: 1;
-  transform: translateY(-6px);
-}
+.crystal-emoji:hover::after{ opacity: 1; transform: translateY(-6px); }
 
-/* Cards (Services) — now a UL with LIs */
+/* Services cards (ul > li) */
 .cards{
   margin-top: 22px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4,1fr);
   gap: 16px;
-  list-style: none;     /* 去掉默认圆点 */
-  padding: 0;           /* 去掉默认内边距 */
-  margin-left: 0;       /* 对齐容器 */
+  list-style: none;
+  padding: 0;
 }
 .cards > li{ margin: 0; }
 .card{
@@ -168,10 +145,10 @@ body{
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
 }
 .card h3{ margin: 2px 0 8px; color: var(--gold); }
-.card p{ color: var(--muted); margin: 0 0 12px; }
+.card p{ margin: 0 0 12px; color: var(--muted); }
 .card:hover,
 .card:focus-within{
   transform: translateY(-4px);
@@ -179,7 +156,7 @@ body{
   box-shadow: 0 12px 42px rgba(0,0,0,.55);
 }
 .link-btn{
-  background: transparent;
+  background: none;
   border: none;
   color: var(--gold);
   font-weight: 600;
@@ -197,15 +174,11 @@ body{
   align-items: center;
 }
 .ticks{
-  list-style: none;
-  padding: 0;
-  margin: 14px 0 0;
+  list-style: none; padding: 0; margin: 14px 0 0;
 }
-.ticks li{
-  margin: 6px 0;
-}
+.ticks li{ margin: 6px 0; }
 .ticks li::before{
-  content: "✓";
+  content:"✓";
   color: var(--gold);
   margin-right: 8px;
 }
@@ -216,7 +189,7 @@ body{
   background: radial-gradient(120px 120px at 70% 30%, rgba(212,175,55,.2), transparent 60%), var(--bg-soft);
   border: 1px solid rgba(212,175,55,.15);
   overflow: hidden;
-  margin: 0; /* 作为 <figure> 时去掉默认外边距 */
+  margin: 0; /* remove default <figure> margins */
 }
 .about-glow{
   position: absolute;
@@ -225,9 +198,9 @@ body{
   animation: slow-pan 12s linear infinite;
 }
 @keyframes slow-pan{
-  0%{ transform: translate(0,0); }
-  50%{ transform: translate(-6%, 4%); }
-  100%{ transform: translate(0,0); }
+  0%{ transform: translate(0,0);}
+  50%{ transform: translate(-6%,4%);}
+  100%{ transform: translate(0,0);}
 }
 .sigil{
   position: absolute;
@@ -236,20 +209,17 @@ body{
   color: rgba(212,175,55,.55);
 }
 
-/* Testimonials — list wrapper */
+/* Testimonials */
+.testi-list{
+  list-style: none; margin: 0; padding: 0;
+}
 .testi-wrap{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 16px;
   margin-top: 18px;
 }
-.testi-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 .testi{
-  margin: 0;
   background: var(--bg-soft);
   border: 1px solid rgba(212,175,55,.14);
   border-radius: var(--radius);
@@ -284,18 +254,18 @@ body{
 .site-footer a:hover,
 .site-footer a:focus-visible{ color: var(--gold); outline: none; }
 
-/* 响应式样式 (Responsive CSS)；GPT5  */
-@media (max-width: 960px){
+/* Responsive */
+@media (max-width:960px){
   .hero-inner{ grid-template-columns: 1fr; text-align: center; }
-  .crystal-emoji{ font-size: 120px; } /* 原先 .crystal -> 修正为 .crystal-emoji */
+  .crystal-emoji{ font-size: 120px; }
   .two-col{ grid-template-columns: 1fr; }
-  .cards{ grid-template-columns: repeat(2, 1fr); }
+  .cards{ grid-template-columns: repeat(2,1fr); }
   .testi-wrap{ grid-template-columns: 1fr; }
   .nav a{ margin-left: 12px; }
 }
-@media (max-width: 520px){
+@media (max-width:520px){
   .cards{ grid-template-columns: 1fr; }
   .logo{ font-size: 18px; }
-  .nav{ display: none; } /* keep header minimal on very small screens */
+  .nav{ display: none; }
   .crystal-emoji{ font-size: 100px; }
 }
