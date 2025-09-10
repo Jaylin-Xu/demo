@@ -60,7 +60,8 @@ body{
   margin-left: 18px;
   opacity: .9;
 }
-.nav a:hover{ opacity: 1; color: var(--gold); }
+.nav a:hover,
+.nav a:focus-visible{ opacity: 1; color: var(--gold); outline: none; }
 
 /* Buttons */
 .btn{
@@ -80,18 +81,22 @@ body{
   color: #2a2300;
   box-shadow: 0 0 32px rgba(212,175,55,.25);
 }
-.btn-primary:hover{
+.btn-primary:hover,
+.btn-primary:focus-visible{
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 0 44px rgba(212,175,55,.4);
+  outline: none;
 }
 .btn-outline{
   border: 1px solid rgba(212,175,55,.5);
   color: var(--gold);
   padding: 10px 16px;
 }
-.btn-outline:hover{
+.btn-outline:hover,
+.btn-outline:focus-visible{
   background: rgba(212,175,55,.08);
   transform: translateY(-1px);
+  outline: none;
 }
 
 /* Hero Section*/
@@ -121,47 +126,42 @@ body{
   margin-bottom: 22px;
 }
 
-
-
 /* 🔮+✨ emoji；GPT 5 */
 .crystal-emoji {
   font-size: 150px;       /* 调整水晶球大小 */
   text-align: center;
-  margin: 40px auto;
+  margin: 40px auto 0;
   position: relative;     /* 方便伪元素定位 */
   display: inline-block;  /* 保证定位有效 */
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-
-.crystal-emoji:hover {
-  transform: scale(1.05);  /* 鼠标悬停时稍微放大 */
-}
-
+.crystal-emoji:hover { transform: scale(1.05); }
 .crystal-emoji::after {
-  content: "✨";           /* 默认附加的 emoji */
-  font-size: 48px;         /* ✨ 的大小 */
+  content: "✨";
+  font-size: 48px;
   position: absolute;
-  top: -10px;              /* 距离 🔮 上方 */
-  right: -30px;            /* 距离 🔮 右侧 */
-  opacity: 0;              /* 默认不显示 */
+  top: -10px;
+  right: -30px;
+  opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
 .crystal-emoji:hover::after {
-  opacity: 1;              /* 悬停时显示 */
-  transform: translateY(-6px);  /* 轻微漂浮效果 */
+  opacity: 1;
+  transform: translateY(-6px);
 }
 
-
-
-/* Cards (Services) */
+/* Cards (Services) — now a UL with LIs */
 .cards{
   margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  list-style: none;     /* 去掉默认圆点 */
+  padding: 0;           /* 去掉默认内边距 */
+  margin-left: 0;       /* 对齐容器 */
 }
+.cards > li{ margin: 0; }
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
   border: 1px solid rgba(212,175,55,.18);
@@ -172,7 +172,8 @@ body{
 }
 .card h3{ margin: 2px 0 8px; color: var(--gold); }
 .card p{ color: var(--muted); margin: 0 0 12px; }
-.card:hover{
+.card:hover,
+.card:focus-within{
   transform: translateY(-4px);
   border-color: rgba(212,175,55,.35);
   box-shadow: 0 12px 42px rgba(0,0,0,.55);
@@ -185,7 +186,8 @@ body{
   cursor: pointer;
   padding: 0;
 }
-.link-btn:hover{ text-decoration: underline; }
+.link-btn:hover,
+.link-btn:focus-visible{ text-decoration: underline; outline: none; }
 
 /* About */
 .two-col{
@@ -214,6 +216,7 @@ body{
   background: radial-gradient(120px 120px at 70% 30%, rgba(212,175,55,.2), transparent 60%), var(--bg-soft);
   border: 1px solid rgba(212,175,55,.15);
   overflow: hidden;
+  margin: 0; /* 作为 <figure> 时去掉默认外边距 */
 }
 .about-glow{
   position: absolute;
@@ -233,12 +236,17 @@ body{
   color: rgba(212,175,55,.55);
 }
 
-/* Testimonials */
+/* Testimonials — list wrapper */
 .testi-wrap{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 18px;
+}
+.testi-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .testi{
   margin: 0;
@@ -273,12 +281,13 @@ body{
   text-decoration: none;
   margin-left: 14px;
 }
-.site-footer a:hover{ color: var(--gold); }
+.site-footer a:hover,
+.site-footer a:focus-visible{ color: var(--gold); outline: none; }
 
 /* 响应式样式 (Responsive CSS)；GPT5  */
 @media (max-width: 960px){
   .hero-inner{ grid-template-columns: 1fr; text-align: center; }
-  .crystal{ width: min(320px, 80%); }
+  .crystal-emoji{ font-size: 120px; } /* 原先 .crystal -> 修正为 .crystal-emoji */
   .two-col{ grid-template-columns: 1fr; }
   .cards{ grid-template-columns: repeat(2, 1fr); }
   .testi-wrap{ grid-template-columns: 1fr; }
@@ -288,4 +297,5 @@ body{
   .cards{ grid-template-columns: 1fr; }
   .logo{ font-size: 18px; }
   .nav{ display: none; } /* keep header minimal on very small screens */
+  .crystal-emoji{ font-size: 100px; }
 }
