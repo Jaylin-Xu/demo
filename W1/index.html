@@ -3,38 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- icon -->   <!-- emoji icon；GPT5 Assist -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
   <title>Fortune Bank</title>
+  <!-- Link external stylesheet (same folder as index.html) -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Header -->
+  <!-- Header + simple nav -->
   <header class="site-header" role="banner" aria-label="Site header">
-    <section class="nav container header-inner" aria-label="Primary links">
+    <nav class="nav container header-inner" aria-label="Primary">
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#testimonials">Testimonials</a>
       <a class="btn btn-outline" href="#cta">Start Reading</a>
-    </section>
+    </nav>
   </header>
 
-  <!-- Main -->
+  <!-- Main content wrapper for better landmark navigation -->
   <main id="main-content">
-    <!-- Hero -->
+    <!-- Hero Section: big promise + Call To Action + animated 🔮✨ -->
     <section class="hero" aria-label="Hero section">
+      <!-- Decorative starfield (no semantics needed) -->
       <div class="stars" aria-hidden="true"></div>
+
+      <!-- Keep a single container; replace inner content block with section -->
       <section class="container hero-inner" aria-label="Intro">
+        <!-- Headline kept concise and on-brief -->
         <h1>Deposit Your Destiny</h1>
         <p class="sub">
           Private fortune-telling for new millionaires. Let the stars guide your next step.
         </p>
         <a id="cta" class="btn btn-primary" href="#services" aria-label="Start your reading">🔮 Start Reading</a>
+
+        <!-- Decorative/semantic figure: animated “crystal ball” -->
         <figure class="crystal-emoji" role="img" aria-label="Crystal ball">🔮</figure>
       </section>
     </section>
 
-    <!-- Services -->
+    <!-- Services: use a list for better accessibility and reduce nested divs -->
     <section id="services" class="section" aria-labelledby="services-title">
       <div class="container">
         <h2 id="services-title">Services</h2>
@@ -42,6 +50,8 @@
           Provide fortune-telling/divination services (horoscope, tarot, palm reading, crystal ball, etc.) <br>
           to answer: “How to keep wealth”, “Future investment directions”, and “Love &amp; relationships”.
         </p>
+
+        <!-- Cards as a list improves semantics for screen readers -->
         <ul class="cards" role="list">
           <li>
             <article class="card">
@@ -50,6 +60,7 @@
               <button class="link-btn" type="button">Learn More →</button>
             </article>
           </li>
+
           <li>
             <article class="card">
               <h3>Tarot</h3>
@@ -57,6 +68,7 @@
               <button class="link-btn" type="button">Draw Cards →</button>
             </article>
           </li>
+
           <li>
             <article class="card">
               <h3>Palm Reading</h3>
@@ -64,6 +76,7 @@
               <button class="link-btn" type="button">Read My Palm →</button>
             </article>
           </li>
+
           <li>
             <article class="card">
               <h3>Hexagram</h3>
@@ -75,7 +88,7 @@
       </div>
     </section>
 
-    <!-- About -->
+    <!-- About: flatten inner structure; use figure for purely decorative panel -->
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container two-col">
         <section aria-label="About content">
@@ -91,17 +104,20 @@
             <li>Private, secure, and fast</li>
           </ul>
         </section>
+
+        <!-- Decorative panel -->
         <figure class="about-panel" aria-hidden="true">
-          <div class="sigil"> </div>
+          <div class="sigil">✶</div>
           <div class="about-glow"></div>
         </figure>
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials: list + blockquotes for cleaner semantics -->
     <section id="testimonials" class="section" aria-labelledby="testimonials-title">
       <div class="container">
         <h2 id="testimonials-title">Testimonials</h2>
+
         <ul class="testi-list testi-wrap" role="list">
           <li>
             <blockquote class="testi">
@@ -130,11 +146,11 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <p>© 2025 Fortune Bank. All rights reserved.</p>
-      <section aria-label="Footer links">
+      <nav aria-label="Footer">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
         <a href="#">Contact</a>
-      </section>
+      </nav>
     </div>
   </footer>
 </body>
