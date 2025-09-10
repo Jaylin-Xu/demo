@@ -99,7 +99,7 @@ body{
   outline: none;
 }
 
-/* Hero Section*/
+/* Hero Section；GPT5 Assist */
 .hero{
   position: relative;
   overflow: clip;
@@ -151,7 +151,7 @@ body{
   transform: translateY(-6px);
 }
 
-/* Cards (Services) — now a UL with LIs */
+/* Cards (Services)；GPT5 Assist */
 .cards{
   margin-top: 22px;
   display: grid;
