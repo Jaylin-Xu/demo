@@ -1,0 +1,71 @@
+/*  This part I used gpt to help me drop the emoji from the top to the bottom. */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: #f5f7fb;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* Full screen */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ☁️position top middle */
+.cloud {
+  font-size: 120px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .1s ease;
+  margin-top: 20px;
+}
+.cloud:active {
+  transform: scale(0.96);
+}
+
+/* text in middle */
+.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.2;
+  text-align: center;
+  z-index: 2;
+  user-select: none;
+}
+
+/* drop animation；gpt */
+@keyframes fall {
+  0%   { transform: translateY(-100%) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 1; }
+}
+
+/* The .rain container is a full-screen transparent layer that holds the falling emojis but lets mouse clicks pass through to elements behind it. */
+.rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* each🐱🐶emoji */
+.drop {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+  animation-name: fall;
+  animation-timing-function: linear;
+  /* animation-duration / delay / left / font-size 在 JS 中随机设置 */
+}

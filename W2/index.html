@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>It's raining cats and dogs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stage">
+
+    <!-- The cloud button at the top  -->
+    <div id="cloud"
+         class="cloud"
+         role="button"
+         tabindex="0"
+         aria-label="Make it rain cats and dogs">
+      ☁️
+    </div>
+
+    <div id="title" class="title">How's the weather?</div>
+
+    <!-- The container that holds raindrops, JS will stuff a lot into it 🐱🐶  -->
+    <div id="rain" class="rain" aria-hidden="true"></div>
+  </div>
+
+  <!-- js part -->
+  <script src="script.js"></script>
+</body>
+</html>
