@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Slang Mini — Basic Prototype (EN)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Slang Mini</h1>
+    <p class="muted">
+      A tiny multilingual slang/abbreviation dictionary. Search • Submit • One-like-per-refresh • Edit after posting.
+    </p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Search</h2>
+      <div class="row">
+        <input id="q" type="text" placeholder="e.g., FYP / YYDS / orz" />
+        <select id="lang">
+          <option value="all">All</option>
+          <option value="en">EN</option>
+          <option value="zh">ZH</option>
+        </select>
+        <button id="btnSearch">Search</button>
+      </div>
+      <div id="results" class="list"></div>
+      <div id="empty" class="empty muted" hidden>No results found</div>
+    </section>
+
+    <section class="card">
+      <h2>Submit a Term</h2>
+      <div class="row">
+        <input id="term" type="text" placeholder="Term * (e.g., YYDS / FYP / orz)" />
+        <select id="language">
+          <option value="">Language *</option>
+          <option value="en">EN</option>
+          <option value="zh">ZH</option>
+        </select>
+      </div>
+      <div class="row">
+        <textarea id="meaning" placeholder="Meaning *"></textarea>
+      </div>
+      <div class="row">
+        <button id="btnAdd">Submit</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer muted">
+    <small>Data is stored in your browser via <code>localStorage</code>. One like per entry per refresh.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
