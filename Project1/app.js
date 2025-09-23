@@ -6,7 +6,8 @@ const LS_KEY = 'slang_mini_db_v2';
 const seed = [
   { id: 1, term: 'FYP',  language: 'en', meaning: 'For You Page; personalized feed on TikTok.', votes: 3 },
   { id: 2, term: 'YYDS', language: 'zh', meaning: '“Forever the God”; means the greatest/GOAT.', votes: 5 },
-  { id: 3, term: 'orz',  language: 'en', meaning: 'Emoticon (kneeling/face-down). Shows frustration/admiration.', votes: 1 }
+  { id: 3, term: 'orz',  language: 'en', meaning: 'Emoticon (kneeling/face-down). Shows frustration/admiration.', votes: 1 },
+  { id: 4, term: '666', language: 'zh', meaning: '“牛逼;In Chinese internet slang, 666 means awesome or Good job.', votes: 6 }
 ];
 
 // One-like-per-refresh tracker (resets on page reload)
