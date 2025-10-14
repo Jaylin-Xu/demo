@@ -1,0 +1,13 @@
+{
+  "name": "valorant-agents-demo",
+  "version": "1.0.0",
+  "description": "Minimal Express demo serving Valorant agents data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
