@@ -1,52 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valorant Agents – Basic Demo</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.5; }
-    h1 { margin-bottom: .25rem; }
-    small { color: #666; }
-    .row { display: flex; gap: .5rem; margin: 1rem 0; flex-wrap: wrap; }
-    input { padding: .5rem .75rem; border: 1px solid #ccc; border-radius: 8px; min-width: 220px; }
-    button { padding: .5rem .75rem; border: 1px solid #111; background: #111; color: #fff; border-radius: 8px; cursor: pointer; }
-    button.secondary { background: #fff; color: #111; }
-    pre { background: #f6f6f6; padding: 1rem; border-radius: 12px; overflow: auto; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signature Wall</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>Valorant Agents Info</h1>
-  <small>Click buttons to call backend routes and render results below.</small>
+  <div class="wrap">
+    <h1>Signature Wall</h1>
+    <p>Submit your <b>name</b>. Click “Load Names” to view the latest list.</p>
 
-  <div class="row">
-    <button id="all" class="secondary">Aagents (all)</button>
+    <div class="card">
+      <div class="row">
+        <label for="nameInput">What is your name?</label>
+        <input id="nameInput" type="text" placeholder="Your name..." maxlength="80" required />
+      </div>
+
+      <div class="actions">
+        <button id="submitBtn" type="button">Submit Name</button>
+        <button id="loadBtn" type="button">Load Names</button>
+      </div>
+      <p id="msg" class="msg"></p>
+    </div>
+
+    <div class="card">
+      <h3>Recent Names</h3>
+      <div id="list"></div>
+    </div>
   </div>
 
-  <div class="row">
-    <input id="name" placeholder="Type a name, e.g. Jett" />
-    <button id="one">Agents name (specific)</button>
-  </div>
-
-  <pre id="out">Result will appear here…</pre>
-
-  <script>
-    const out = document.getElementById('out');
-    document.getElementById('all').addEventListener('click', async () => {
-      try {
-        const r = await fetch('/agents');
-        out.textContent = JSON.stringify(await r.json(), null, 2);
-      } catch (e) { out.textContent = String(e); }
-    });
-
-    document.getElementById('one').addEventListener('click', async () => {
-      const v = document.getElementById('name').value.trim();
-      if (!v) { out.textContent = 'Please type an agent name'; return; }
-      try {
-        const r = await fetch(`/agents/${encodeURIComponent(v)}`);
-        out.textContent = JSON.stringify(await r.json(), null, 2);
-      } catch (e) { out.textContent = String(e); }
-    });
-  </script>
+  <script src="./app.js"></script>
 </body>
 </html>

@@ -1,52 +1,47 @@
-console.log("Hello VALORANT!");
+const path = require('path');
+const express = require('express');
 
-// Data to send to the client side
-let agents = {
-  "data": [
-    { "name": "Jett",    "gender": "Female", "nationality": "South Korea", "role": "Duelist" },
-    { "name": "Phoenix", "gender": "Male",   "nationality": "United Kingdom", "role": "Duelist" },
-    { "name": "Sage",    "gender": "Female", "nationality": "China", "role": "Sentinel" },
-    { "name": "Sova",    "gender": "Male",   "nationality": "Russia", "role": "Initiator" },
-    { "name": "Reyna",   "gender": "Female", "nationality": "Mexico", "role": "Duelist" },
-    { "name": "Brimstone","gender": "Male",  "nationality": "United States", "role": "Controller" },
-    { "name": "Omen",    "gender": "Male",   "nationality": "Unknown", "role": "Controller" },
-    { "name": "Killjoy", "gender": "Female", "nationality": "Germany", "role": "Sentinel" },
-    { "name": "Raze",    "gender": "Female", "nationality": "Brazil", "role": "Duelist" },
-    { "name": "Fade",    "gender": "Female", "nationality": "Turkey", "role": "Initiator" }
-  ]
-};
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+db.defaults({ names: [] }).write(); // init collection
 
-// 3. Require express
-let express = require('express');
+const app = express();
 
-// 4. Call express function
-let app = express();
+app.use(express.json());
 
-// 11. Serve static files
-app.use(express.static('public'));
+// serve ./public
+app.use(express.static(path.join(__dirname, 'public')));
 
-// 8. about route
-app.get('/about', function (request, response) {
-  response.send("This is a VALORANT agents demo");
+// homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// 9. Create a data route
-app.get('/agents', function (request, response) {
-  response.json(agents);
-});
-
-// 10. Serve specific data
-app.get('/agents/:name', function (request, response) {
-  let q = (request.params.name || '').toLowerCase().trim();
-  let found = agents.data.find(a => a.name.toLowerCase() === q);
-  if (found) {
-    response.json(found);
-  } else {
-    response.json({ "status": "No such agent" });
+// POST /new-name  -> save a name
+app.post('/new-name', (req, res) => {
+  const { name } = req.body || {};
+  const trimmed = (name || '').trim();
+  if (!trimmed) {
+    return res.status(400).json({ status: 'fail', message: 'name is required' });
   }
+  const item = {
+    id: Date.now(),
+    name: trimmed.slice(0, 80),
+    timestamp: Date.now()
+  };
+  db.get('names').unshift(item).write();
+  res.json({ status: 'success', message: 'Name saved', item });
 });
 
-// 6. Listen to run the server
-app.listen(5500, function () {
-  console.log("The app is listening on http://localhost:5500");
+// GET /data  -> return recent names
+app.get('/data', (req, res) => {
+  const data = db.get('names').take(100).value();
+  res.json({ status: 'success', data });
+});
+
+const PORT = 8888; // fixed port as you requested
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
