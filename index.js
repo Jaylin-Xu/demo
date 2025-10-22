@@ -1,17 +1,26 @@
-const path = require('path');
-const express = require('express');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express from 'express';
+import low from 'lowdb';
+import FileSyncPkg from 'lowdb/adapters/FileSync.js';
 
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json');
+const FileSync = FileSyncPkg.default || FileSyncPkg;
+
+// __dirname in ESM:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//DB path
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'db.json');
+
+const adapter = new FileSync(DB_PATH);
 const db = low(adapter);
-db.defaults({ names: [] }).write(); // init collection
+db.defaults({ names: [] }).write();
 
 const app = express();
-
 app.use(express.json());
 
-// serve ./public
+// ./public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // homepage
@@ -19,7 +28,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// POST /new-name  -> save a name
+// Save
 app.post('/new-name', (req, res) => {
   const { name } = req.body || {};
   const trimmed = (name || '').trim();
@@ -35,13 +44,13 @@ app.post('/new-name', (req, res) => {
   res.json({ status: 'success', message: 'Name saved', item });
 });
 
-// GET /data  -> return recent names
+
 app.get('/data', (req, res) => {
   const data = db.get('names').take(100).value();
   res.json({ status: 'success', data });
 });
 
-const PORT = 8888; // fixed port as you requested
+const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
