@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signature Wall</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Signature Wall</h1>
+    <p>Submit your <b>name</b>. Click “Load Names” to view the latest list.</p>
+
+    <div class="card">
+      <div class="row">
+        <label for="nameInput">What is your name?</label>
+        <input id="nameInput" type="text" placeholder="Your name..." maxlength="80" required />
+      </div>
+
+      <div class="actions">
+        <button id="submitBtn" type="button">Submit Name</button>
+        <button id="loadBtn" type="button">Load Names</button>
+      </div>
+      <p id="msg" class="msg"></p>
+    </div>
+
+    <div class="card">
+      <h3>Recent Names</h3>
+      <div id="list"></div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
